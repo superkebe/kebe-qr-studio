@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Scan, inspect, and create QR codes with Kebe QR Studio, built by Isiaka Kebe."
+    />
+    <title>Kebe QR Studio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="./"
+        ><span class="logo">▦</span> Kebe<span class="light">QR Studio</span></a
+      ><span class="badge" id="badge" aria-live="polite">LOCAL PROCESSING</span>
+    </header>
+    <main>
+      <div class="eyebrow">BUILT BY ISIAKA KEBE · OHIO STATE CSE</div>
+      <h1>Small code.<br /><span>Endless possibilities.</span></h1>
+      <p class="intro">
+        Read what's inside. Create something worth sharing.<br />Your QR workspace, right in your
+        browser.
+      </p>
+      <div class="workspace">
+        <section class="panel">
+          <div class="panelhead">
+            <span class="step">01</span>
+            <div>
+              <h2>Read a QR code</h2>
+              <p>Drop an image. Discover the content.</p>
+            </div>
+          </div>
+          <label class="drop" id="drop"
+            ><span class="uploadicon">↥</span><strong>Drop your QR image here</strong
+            ><span>or click to browse · PNG, JPG, WebP</span
+            ><input
+              id="scanfile"
+              type="file"
+              accept="image/png,image/jpeg,image/webp,image/gif,image/bmp" /></label
+          ><img id="scanpreview" alt="Uploaded QR image" hidden />
+          <div id="scanstatus" role="status" aria-live="polite" class="status">
+            Your decoded content will appear here.
+          </div>
+          <pre id="result" hidden></pre>
+          <div class="actions">
+            <button id="copy" hidden>Copy content</button
+            ><a id="open" class="button" target="_blank" rel="noopener noreferrer" hidden
+              >Open link ↗</a
+            ><button id="restore" hidden>Download decoded file</button>
+          </div>
+        </section>
+        <section class="panel">
+          <div class="panelhead">
+            <span class="step">02</span>
+            <div>
+              <h2>Create a QR code</h2>
+              <p>Turn your next idea into a scan.</p>
+            </div>
+          </div>
+          <div class="tabs" role="tablist">
+            <button role="tab" aria-selected="true" data-mode="text">Link / text</button
+            ><button role="tab" aria-selected="false" data-mode="file">Small file</button
+            ><button role="tab" aria-selected="false" data-mode="upload">Upload file</button
+            ><button role="tab" aria-selected="false" data-mode="filelink">File link</button>
+          </div>
+          <label id="textlabel" for="content">LINK OR TEXT</label
+          ><textarea id="content" placeholder="https://your-portfolio.com" rows="3"></textarea>
+          <div id="filearea" hidden>
+            <label for="createfile">EMBED A SMALL FILE · UP TO 1 KB</label
+            ><input id="createfile" type="file" />
+            <p class="hint">
+              The file travels inside the QR. Scan it with this app to download it.
+            </p>
+          </div>
+          <div id="uploadarea" hidden>
+            <label for="uploadfile">UPLOAD A FILE · UP TO 200 MB</label
+            ><input id="uploadfile" type="file" />
+            <label for="uploadcode" class="spaced">UPLOAD CODE</label
+            ><input id="uploadcode" type="password" autocomplete="off" placeholder="Ask the site owner" />
+            <p class="hint">
+              This sends your file to the QR Studio server and creates a QR code that opens its file
+              page. Anyone with the QR code can download the file until it expires (7 days by
+              default).
+            </p>
+          </div>
+          <p id="modehint" class="hint">Links open only when you choose to open them.</p>
+          <div class="options">
+            <label>INK COLOR <input type="color" id="color" value="#123c35" /></label
+            ><label
+              >EXPORT SIZE
+              <select id="size">
+                <option value="512">512 × 512</option>
+                <option value="1024">1024 × 1024</option>
+              </select></label
+            >
+          </div>
+          <button class="primary" id="generate">Generate QR code <span>↗</span></button>
+          <div id="createstatus" class="status" role="status" aria-live="polite"></div>
+          <a id="downloadlink" class="button" hidden>View uploaded file ↗</a>
+          <div class="qrbox">
+            <canvas id="qr" hidden></canvas>
+            <div id="empty">
+              <span>▦</span>
+              <p>Your next QR code starts here</p>
+            </div>
+          </div>
+          <div class="actions">
+            <button id="png" hidden>Download PNG ↓</button
+            ><button id="svg" hidden>Download SVG ↓</button>
+          </div>
+        </section>
+      </div>
+      <div class="notes">
+        <article>
+          <b>Private by design</b>
+          <p>
+            QR scans and small file embedding run in your browser. Only the Upload file option sends
+            anything to a server, and those files expire automatically.
+          </p>
+        </article>
+        <article>
+          <b>Inspect before you open</b>
+          <p>Read the decoded content, then choose your next action.</p>
+        </article>
+        <article>
+          <b>Built to share</b>
+          <p>Export crisp PNG images or scalable SVG codes for your projects.</p>
+        </article>
+      </div>
+      <footer>
+        <span>IK / ISIAKA KEBE</span
+        ><span>Computer Science & Engineering · The Ohio State University</span>
+      </footer>
+    </main>
+    <script src="vendor/jsQR.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

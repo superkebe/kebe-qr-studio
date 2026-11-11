@@ -1,0 +1,19 @@
+# Cloudflare Workers deployment config.
+# Run `npm run build` first; it bundles the page and assets into dist/server/index.js.
+name = "kebe-qr-studio"
+main = "dist/server/index.js"
+compatibility_date = "2026-01-01"
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "kebe-qr-studio-files"
+
+[vars]
+FILE_TTL_DAYS = "7"
+
+# Deletes expired uploads once a day.
+[triggers]
+crons = ["17 4 * * *"]
+
+# Uploads stay disabled until you set a secret:
+#   npx wrangler secret put UPLOAD_CODE

@@ -1,0 +1,25 @@
+{
+  "name": "kebe-qr-studio",
+  "version": "1.0.0",
+  "description": "Browser-based QR scanner and generator with expiring file uploads",
+  "scripts": {
+    "test": "npm run build && node --test",
+    "build": "node scripts/build.mjs",
+    "dev": "npm run build && node scripts/dev.mjs",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "keywords": [],
+  "author": "Isiaka Kebe",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "jsqr": "^1.4.0",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "miniflare": "^4.20260730.0",
+    "pngjs": "^7.0.0",
+    "wrangler": "^4.160.0"
+  }
+}
